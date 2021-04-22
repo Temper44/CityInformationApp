@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CityInformationApp</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
+    />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
+    <link
+      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style/main.css" />
+    <script src="node_modules/chart.js/dist/Chart.js" defer></script>
+    <script src="index.js" defer></script>
+  </head>
+  <body>
+    <section>
+      <header>
+        <div class="logoContainer">
+          <img src="assets/img/Logo/logo.svg" alt="Skyscrapers Logo" />
+        </div>
+        <div class="searchBarContainer">
+          <form class="searchForm" role="search">
+            <input
+              type="text"
+              name="searchText"
+              id="searchText"
+              autocomplete="off"
+              role="searchbox"
+              placeholder="search for a city..."
+              required
+            />
+            <button type="submit" value="submit" id="submited">
+              <img src="/assets/img/search.svg" alt="search" />
+            </button>
+          </form>
+        </div>
+        <nav class="navContainer">
+          <div class="dropdown">
+            <button class="dropbtn" id="favourites">
+              Favourites <i class="fas fa-angle-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div>
+          <div class="dropdown">
+            <button class="dropbtn" id="history">
+              History <i class="fas fa-angle-down"></i>
+            </button>
+            <div class="dropdown-content">
+              <a href="#">Link 1</a>
+              <a href="#">Link 2</a>
+              <a href="#">Link 3</a>
+            </div>
+          </div>
+        </nav>
+      </header>
+    </section>
+    <section>
+      <main>
+        <div class="firstRow">
+          <div class="summaryContainer">
+            <p class="summaryText">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet,
+              adipiscing ipsum eget leo tristique urna. Nullam convallis quis id
+              urna nulla suspendisse elit pretium pellentesque. Ultrices
+              dignissim nulla diam, adipiscing nec. Fermentum mauris erat
+              blandit pharetra consectetur egestas egestas urna. Elit, arcu
+              rutrum nulla felis nascetur.Sit egestas facilisi massa ullamcorper
+              magnis. <a href="#">More Info</a>
+            </p>
+            <p class="summaryPopulation"><b>Population: </b>2341232</p>
+          </div>
+          <div class="weatherContainer">
+            <h1>
+              <span class="city">Toronto</span>,
+              <span class="country">Canada</span>
+              <i class="far fa-star fa-xs"></i>
+            </h1>
+            <p class="date">Tuesday, 6 April 2021</p>
+            <p class="time">11:10 am</p>
+            <div class="temperatureContainer">
+              <div class="temperature">15°C</div>
+              <div class="conditionMaxMinContainer">
+                <p class="condition">Cloudy</p>
+                <p class="maxMin">13°C / 16°C</p>
+              </div>
+            </div>
+            <div class="graphContainer">
+              <div class="chart-container">
+                <canvas id="myChart"></canvas>
+              </div>
+            </div>
+          </div>
+          <div class="imageContainer">
+            <img
+              class="image"
+              src="/assets/img/picture/toronto.jpg"
+              alt="Toronto city"
+              srcset=""
+            />
+          </div>
+        </div>
+        <div class="secondRow">
+          <div class="newsContainer">
+            <div class="newsItemContainer">
+              <div class="newsItem">
+                <h3>Lorem ipsum dolor sit amet, consectetur .</h3>
+                <div class="newsItemBody">
+                  <p class="newsItemText">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Amet, adipiscing ipsum eget leo tristique urna. convallis
+                    quis id urna nulla suspendisse elit pretium pellentesque.
+                  </p>
+                  <img
+                    class="newsItemImage"
+                    src="/assets/img/picture/Transmission1.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </div>
+              <div class="newsItem">
+                <h3>Lorem ipsum dolor sit amet, consectetur .</h3>
+                <div class="newsItemBody">
+                  <p class="newsItemText">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Amet, adipiscing ipsum eget leo tristique urna. convallis
+                    quis id urna nulla suspendisse elit pretium pellentesque.
+                  </p>
+                  <img
+                    class="newsItemImage"
+                    src="/assets/img/picture/Transmission1.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </div>
+              <div class="newsItem">
+                <h3>Lorem ipsum dolor sit amet, consectetur .</h3>
+                <div class="newsItemBody">
+                  <p class="newsItemText">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                    Amet, adipiscing ipsum eget leo tristique urna. convallis
+                    quis id urna nulla suspendisse elit pretium pellentesque.
+                  </p>
+                  <img
+                    class="newsItemImage"
+                    src="/assets/img/picture/Transmission1.jpg"
+                    alt=""
+                    srcset=""
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="mapsContainer">
+            <div id="map">
+              <div class="map-overlay top">
+                <div class="map-overlay-inner">
+                  <fieldset>
+                    <label>Select layer</label>
+                    <select id="layer" name="layer">
+                      <option value="water">Water</option>
+                      <option value="building">Buildings</option>
+                    </select>
+                  </fieldset>
+                  <fieldset>
+                    <label>Choose a color</label>
+                    <div id="swatches"></div>
+                  </fieldset>
+                </div>
+              </div>
+
+              <div id="menu">
+                <input
+                  id="satellite-v9"
+                  type="radio"
+                  name="rtoggle"
+                  value="satellite"
+                />
+                <label for="satellite-v9">satellite</label>
+                <input
+                  id="light-v10"
+                  type="radio"
+                  name="rtoggle"
+                  value="light"
+                />
+                <label for="light-v10">light</label>
+                <input id="dark-v10" type="radio" name="rtoggle" value="dark" />
+                <label for="dark-v10">dark</label>
+                <input
+                  id="streets-v11"
+                  type="radio"
+                  name="rtoggle"
+                  value="streets"
+                  checked="checked"
+                />
+                <label for="streets-v11">streets</label>
+                <input
+                  id="outdoors-v11"
+                  type="radio"
+                  name="rtoggle"
+                  value="outdoors"
+                />
+                <label for="outdoors-v11">outdoors</label>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+    <section>
+      <div class="infoSection">
+        <div class="colorContainer">
+          <div class="colorButton"></div>
+          <div class="colorButton active"></div>
+          <div class="colorButton"></div>
+        </div>
+        <i class="fas fa-info"></i>
+      </div>
+    </section>
+  </body>
+</html>
