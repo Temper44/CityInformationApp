@@ -162,34 +162,54 @@ form:hover {
 .summaryContainer {
   .summaryText {
     font-size: 1.1rem;
+    @include phone-only {
+      font-size: 0.9rem;
+      line-height: 1.15rem;
+    }
     font-family: $font-light;
   }
 
   .summaryPopulation {
     margin-top: 10px;
+    @include phone-only {
+      font-size: 1rem;
+    }
   }
 }
 
 //weather
 .weatherContainer {
+  caret-color: transparent;
   h1 {
     font-family: $font-bold;
     letter-spacing: 0.025rem;
     .city {
       font-size: 2.7rem;
+      @include phone-only {
+        font-size: 1.9rem;
+      }
     }
     .country {
       font-size: 1.5rem;
+      @include phone-only {
+        font-size: 1.2rem;
+      }
     }
   }
   .date {
     font-family: $font-light;
     font-size: 1rem;
+    @include phone-only {
+      font-size: 0.8rem;
+    }
     padding: 5px;
   }
   .time {
     font-family: $font-regular;
     font-size: 1.2rem;
+    @include phone-only {
+      font-size: 1rem;
+    }
     padding: 5px;
   }
 
@@ -197,11 +217,17 @@ form:hover {
     .temperature {
       font-family: $font-bold;
       font-size: 2.2rem;
+      @include phone-only {
+        font-size: 1.7rem;
+      }
       letter-spacing: 0.025rem;
     }
     .conditionMaxMinContainer {
       font-family: $font-light;
       font-size: 1rem;
+      @include phone-only {
+        font-size: 0.85rem;
+      }
       .condition {
         font-family: $font-light-italic;
         margin-bottom: 5px;
@@ -216,7 +242,13 @@ form:hover {
     .chart-container {
       position: relative;
       // height: 60%;
-      width: 60%;
+      width: 70%;
+      @include desktop-down {
+        max-width: 310px;
+      }
+      @include phone-only {
+        width: 100%;
+      }
     }
   }
 }
@@ -224,7 +256,14 @@ form:hover {
 .image {
   border: 4px solid #e5e5e5;
   border-radius: 5px;
-  height: 335px;
+
+  object-fit: cover;
+  width: 100%;
+  // height: 100%;
+  /*   @include desktop-down {
+    object-fit: unset;
+    height: 300px;
+  } */
 }
 //news
 .newsItemContainer {
@@ -237,19 +276,40 @@ form:hover {
     h3 {
       font-size: 1.2rem;
       font-family: $font-bold;
+      @include phone-only {
+        font-size: 1.1rem;
+        margin-bottom: 10px;
+      }
     }
     .newsItemBody {
       display: flex;
       justify-content: space-between;
       align-items: center;
+      @include phone-only {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
 
       .newsItemText {
         font-size: 1rem;
         font-family: $font-light;
         padding-right: 10px;
+        @include phone-only {
+          order: 2;
+          padding-right: 0px;
+          font-size: 0.9rem;
+          // flex-basis: 100%;
+        }
       }
       .newsItemImage {
         width: 170px;
+        @include phone-only {
+          order: 1;
+          object-fit: cover;
+          width: 95%;
+          margin-bottom: 10px;
+          // flex-basis: 100%;
+        }
       }
     }
   }
@@ -276,13 +336,22 @@ form:hover {
 
 //maps
 #map {
+  height: 100%;
   width: 100%;
   min-width: 350px;
   min-height: 300px;
-  height: 100%;
+  @include phone-only {
+    min-width: 150px !important;
+  }
   background-color: brown;
   .map-overlay {
     max-width: 220px;
+    @include phone-only {
+      max-width: 180px;
+    }
+    @include phone-only {
+      font-size: 0.75rem;
+    }
     font-size: 0.85rem;
     font-family: $font-light;
     color: $black;
@@ -290,17 +359,23 @@ form:hover {
     top: 0;
     left: 0;
     z-index: 999;
-    padding: 5px;
+    padding: 0px;
     .map-overlay-inner {
-      background-color: #fff;
+      background-color: $white;
       box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
       border-radius: 3px;
       padding: 10px;
       margin-bottom: 10px;
+      @include phone-only {
+        margin-bottom: 5px;
+      }
       fieldset {
         border: none;
         padding: 0;
         margin: 0 0 10px;
+        @include phone-only {
+          margin: 0 0 0px;
+        }
       }
       fieldset:last-child {
         margin: 0;
@@ -308,6 +383,20 @@ form:hover {
       select {
         width: 100%;
         font-family: $font-regular !important;
+        @include tablet-landscape-down {
+          font-size: 0.9rem;
+        }
+        @include phone-only {
+          font-size: 0.8rem;
+        }
+        option {
+          @include tablet-landscape-down {
+            font-size: 0.9rem;
+          }
+          @include phone-only {
+            font-size: 0.7rem;
+          }
+        }
       }
       label {
         display: block;
@@ -318,6 +407,10 @@ form:hover {
         display: inline-block;
         width: 36px;
         height: 20px;
+        @include phone-only {
+          width: 30px;
+          height: 17px;
+        }
         border: none;
         cursor: pointer;
       }
@@ -333,8 +426,8 @@ form:hover {
 
 #menu {
   position: absolute;
-  z-index: 1;
-  bottom: 30px;
+  z-index: 100;
+  bottom: 0px;
   background: #efefef;
   padding: 10px;
   font-family: $font-light;
@@ -342,3 +435,36 @@ form:hover {
 }
 
 //info
+.colorContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  .colorButton {
+    width: 23px;
+    height: 23px;
+    background-color: yellow;
+    border: 1px solid;
+    border-color: black;
+    border-radius: 30px;
+    margin: 7px;
+    cursor: pointer;
+    caret-color: transparent;
+    @include phone-only {
+      width: 20px;
+      height: 20px;
+    }
+  }
+  .active {
+    border-color: $white;
+  }
+}
+.fa-info {
+  margin-top: 10px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  caret-color: transparent;
+  @include phone-only {
+    font-size: 1rem;
+  }
+}

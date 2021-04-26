@@ -11,6 +11,11 @@ html {
   background-color: #ffff;
 }
 
+body {
+  // overflow-y: hidden;
+  overflow-x: hidden;
+}
+
 hr {
   width: 90%;
   margin: auto;
