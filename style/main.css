@@ -58,7 +58,6 @@ html {
   font-size: 16px;
   color: #e5e5e5;
   font-family: "Lato-regular";
-  background-color: #ffff;
 }
 
 body {
@@ -75,6 +74,13 @@ hr {
   display: none;
 }
 
+body {
+  background: #14213d;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 header {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -85,7 +91,6 @@ header {
       -ms-flex-align: center;
           align-items: center;
   padding: 20px 0px 10px 0px;
-  background-color: lightblue;
 }
 
 @media (max-width: 900px) {
@@ -111,7 +116,6 @@ main {
 }
 
 .firstRow {
-  background-color: lightcoral;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -122,14 +126,27 @@ main {
           align-items: stretch;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding: 0px 20px 0px 20px;
+}
+
+@media (max-width: 900px) {
+  .firstRow {
+    padding: 0px 10px 0px 10px;
+  }
+}
+
+@media (max-width: 599px) {
+  .firstRow {
+    padding: 0px 5px 0px 5px;
+  }
 }
 
 .firstRow .summaryContainer {
   -webkit-box-flex: 1;
       -ms-flex: 1;
           flex: 1;
-  background-color: red;
   padding: 20px;
+  padding-top: 40px;
 }
 
 @media (max-width: 1200px) {
@@ -157,7 +174,6 @@ main {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
-  background-color: blue;
   padding: 15px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -236,7 +252,6 @@ main {
 
 .firstRow .weatherContainer .graphContainer {
   width: 100%;
-  background-color: chocolate;
   height: 100%;
   min-height: 140px;
 }
@@ -254,7 +269,6 @@ main {
   -webkit-box-ordinal-group: 2;
       -ms-flex-order: 1;
           order: 1;
-  background-color: green;
   padding: 10px;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -283,7 +297,6 @@ main {
 }
 
 .secondRow {
-  background-color: lightgreen;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -294,6 +307,19 @@ main {
           align-items: stretch;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
+  padding: 0px 20px 0px 20px;
+}
+
+@media (max-width: 900px) {
+  .secondRow {
+    padding: 0px 10px 0px 10px;
+  }
+}
+
+@media (max-width: 599px) {
+  .secondRow {
+    padding: 0px 5px 0px 5px;
+  }
 }
 
 .secondRow .newsContainer {
@@ -306,7 +332,6 @@ main {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  background-color: yellowgreen;
   padding: 20px;
 }
 
@@ -321,14 +346,20 @@ main {
   max-width: 750px;
   min-width: 600px;
   height: 376px;
-  background-color: lightblue;
   overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .secondRow .newsContainer .newsItemContainer {
+    height: 450px;
+  }
 }
 
 @media (max-width: 599px) {
   .secondRow .newsContainer .newsItemContainer {
     min-width: 200px;
     width: 100%;
+    height: 450px;
   }
 }
 
@@ -345,7 +376,6 @@ main {
   -webkit-box-align: stretch;
       -ms-flex-align: stretch;
           align-items: stretch;
-  background-color: rebeccapurple;
   padding: 20px;
 }
 
@@ -382,8 +412,8 @@ main {
   border-radius: 10px;
   position: fixed;
   z-index: 1000;
-  bottom: 40px;
-  left: 40px;
+  bottom: 30px;
+  left: 30px;
 }
 
 @media (max-width: 599px) {
@@ -537,6 +567,7 @@ form:hover {
   color: #e5e5e5;
   padding: 12px 20px 12px 20px;
   font-size: 1rem;
+  letter-spacing: 0.05rem;
   -webkit-box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
           box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   border: 1px solid #e5e5e5;
@@ -678,6 +709,10 @@ form:hover {
   }
 }
 
+.weatherContainer h1 .star {
+  cursor: pointer;
+}
+
 .weatherContainer .date {
   font-family: "Lato-light";
   font-size: 1rem;
@@ -762,6 +797,8 @@ form:hover {
 .image {
   border: 4px solid #e5e5e5;
   border-radius: 5px;
+  -webkit-transition: all 20s ease-in;
+  transition: all 20s ease-in;
   -o-object-fit: cover;
      object-fit: cover;
   width: 100%;
@@ -777,7 +814,7 @@ form:hover {
           box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   border-radius: 6px;
   padding: 17px 15px 15px 17px;
-  margin: 0px 20px 25px 20px;
+  margin: 0px 13px 25px 20px;
 }
 
 .newsItemContainer .newsItem h3 {
@@ -863,7 +900,6 @@ form:hover {
   width: 100%;
   min-width: 350px;
   min-height: 300px;
-  background-color: brown;
 }
 
 @media (max-width: 599px) {
