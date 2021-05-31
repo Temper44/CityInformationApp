@@ -5,17 +5,13 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>CityInformationApp</title>
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"
-    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css" />
     <script src="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js"></script>
-    <link
-      href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css"
-      rel="stylesheet"
-    />
+    <link href="https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css" rel="stylesheet" />
     <link rel="stylesheet" href="style/main.css" />
+    <!--  TODO: use node require -->
     <script src="node_modules/chart.js/dist/Chart.js" defer></script>
+    <script src="node_modules/moment/min/moment.min.js" defer></script>
     <script src="./js/index.js" type="module" defer></script>
   </head>
   <body>
@@ -33,6 +29,7 @@
               autocomplete="off"
               role="searchbox"
               placeholder="search for a city..."
+              value="London"
               required
             />
             <button type="submit" value="submit" id="submited">
@@ -42,9 +39,7 @@
         </div>
         <nav class="navContainer">
           <div class="dropdown">
-            <button class="dropbtn" id="favourites">
-              Favourites <i class="fas fa-angle-down"></i>
-            </button>
+            <button class="dropbtn" id="favourites">Favourites <i class="fas fa-angle-down"></i></button>
             <div class="dropdown-content">
               <a href="#">Link 1</a>
               <a href="#">Link 2</a>
@@ -52,9 +47,7 @@
             </div>
           </div>
           <div class="dropdown">
-            <button class="dropbtn" id="history">
-              History <i class="fas fa-angle-down"></i>
-            </button>
+            <button class="dropbtn" id="history">History <i class="fas fa-angle-down"></i></button>
             <div class="dropdown-content">
               <a href="#">Link 1</a>
               <a href="#">Link 2</a>
@@ -69,13 +62,10 @@
         <div class="firstRow">
           <div class="summaryContainer">
             <p class="summaryText">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet,
-              adipiscing ipsum eget leo tristique urna. Nullam convallis quis id
-              urna nulla suspendisse elit pretium pellentesque. Ultrices
-              dignissim nulla diam, adipiscing nec. Fermentum mauris erat
-              blandit pharetra consectetur egestas egestas urna. Elit, arcu
-              rutrum nulla felis nascetur.Sit egestas facilisi massa ullamcorper
-              magnis.
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, adipiscing ipsum eget leo tristique urna. Nullam
+              convallis quis id urna nulla suspendisse elit pretium pellentesque. Ultrices dignissim nulla diam, adipiscing nec.
+              Fermentum mauris erat blandit pharetra consectetur egestas egestas urna. Elit, arcu rutrum nulla felis nascetur.Sit
+              egestas facilisi massa ullamcorper magnis.
             </p>
             <a class="summaryTextLink" href="#" target="_blank"> More Info</a>
             <p class="summaryPopulation"><b>Population: </b>2341232</p>
@@ -83,16 +73,17 @@
           <div class="weatherContainer">
             <h1>
               <span class="city">Toronto</span>,
-              <span class="country">Canada</span>
+              <span class="country">CA</span>
               <i class="far fa-star fa-xs star"></i>
             </h1>
             <p class="date">Tuesday, 6 April 2021</p>
             <p class="time">11:10 am</p>
             <div class="temperatureContainer">
               <div class="temperature">15°C</div>
+              <div><img class="weatherIcon" src="http://openweathermap.org/img/wn/10d@2x.png" alt="" /></div>
               <div class="conditionMaxMinContainer">
                 <p class="condition">Cloudy</p>
-                <p class="maxMin">13°C / 16°C</p>
+                <p class="maxMin"><span class="min">13°C</span> / <span class="max">16°C</span></p>
               </div>
             </div>
             <div class="graphContainer">
@@ -102,64 +93,62 @@
             </div>
           </div>
           <div class="imageContainer">
-            <img
-              class="image"
-              src="/assets/img/picture/toronto.jpg"
-              alt="Toronto city"
-              srcset=""
-            />
+            <img class="image" src="/assets/img/picture/toronto.jpg" alt="Toronto city" srcset="" />
           </div>
         </div>
         <div class="secondRow">
           <div class="newsContainer">
             <div class="newsItemContainer">
               <div class="newsItem">
-                <h3>Lorem ipsum dolor sit amet, consectetur .</h3>
+                <a class="newsHeaderLink" href="#" target="_blank">
+                  <h3>Lorem ipsum dolor sit amet, consectetur .</h3>
+                </a>
                 <div class="newsItemBody">
-                  <p class="newsItemText">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Amet, adipiscing ipsum eget leo tristique urna. convallis
-                    quis id urna nulla suspendisse elit pretium pellentesque.
+                  <p class="newsText">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, adipiscing ipsum eget leo tristique urna.
+                    convallis quis id urna nulla suspendisse elit pretium pellentesque.
                   </p>
-                  <img
-                    class="newsItemImage"
-                    src="/assets/img/picture/Transmission1.jpg"
-                    alt=""
-                    srcset=""
-                  />
+                  <a class="newsImageLink" href="#" target="_blank"
+                    ><img class="newsImage" src="/assets/img/picture/Transmission1.jpg" alt="" srcset=""
+                  /></a>
                 </div>
+                <p class="newsMetaData">
+                  <span class="newsDate">28.04.2021</span>, <span class="newsSource">Kronen Zeitung</span>
+                </p>
               </div>
               <div class="newsItem">
-                <h3>Lorem ipsum dolor sit amet, consectetur .</h3>
+                <a class="newsHeaderLink" href="#" target="_blank">
+                  <h3>Lorem ipsum dolor sit amet, consectetur .</h3>
+                </a>
                 <div class="newsItemBody">
-                  <p class="newsItemText">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Amet, adipiscing ipsum eget leo tristique urna. convallis
-                    quis id urna nulla suspendisse elit pretium pellentesque.
+                  <p class="newsText">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, adipiscing ipsum eget leo tristique urna.
+                    convallis quis id urna nulla suspendisse elit pretium pellentesque.
                   </p>
-                  <img
-                    class="newsItemImage"
-                    src="/assets/img/picture/Transmission1.jpg"
-                    alt=""
-                    srcset=""
-                  />
+                  <a class="newsImageLink" href="#" target="_blank"
+                    ><img class="newsImage" src="/assets/img/picture/Transmission1.jpg" alt="" srcset=""
+                  /></a>
                 </div>
+                <p class="newsMetaData">
+                  <span class="newsDate">28.04.2021</span>, <span class="newsSource">Kronen Zeitung</span>
+                </p>
               </div>
               <div class="newsItem">
-                <h3>Lorem ipsum dolor sit amet, consectetur .</h3>
+                <a class="newsHeaderLink" href="#" target="_blank">
+                  <h3>Lorem ipsum dolor sit amet, consectetur .</h3>
+                </a>
                 <div class="newsItemBody">
-                  <p class="newsItemText">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Amet, adipiscing ipsum eget leo tristique urna. convallis
-                    quis id urna nulla suspendisse elit pretium pellentesque.
+                  <p class="newsText">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Amet, adipiscing ipsum eget leo tristique urna.
+                    convallis quis id urna nulla suspendisse elit pretium pellentesque.
                   </p>
-                  <img
-                    class="newsItemImage"
-                    src="/assets/img/picture/Transmission1.jpg"
-                    alt=""
-                    srcset=""
-                  />
+                  <a class="newsImageLink" href="#" target="_blank"
+                    ><img class="newsImage" src="/assets/img/picture/Transmission1.jpg" alt="" srcset=""
+                  /></a>
                 </div>
+                <p class="newsMetaData">
+                  <span class="newsDate">28.04.2021</span>, <span class="newsSource">Kronen Zeitung</span>
+                </p>
               </div>
             </div>
           </div>
@@ -182,36 +171,15 @@
               </div>
 
               <div id="menu">
-                <input
-                  id="satellite-v9"
-                  type="radio"
-                  name="rtoggle"
-                  value="satellite"
-                />
+                <input id="satellite-v9" type="radio" name="rtoggle" value="satellite" />
                 <label for="satellite-v9">satellite</label>
-                <input
-                  id="light-v10"
-                  type="radio"
-                  name="rtoggle"
-                  value="light"
-                />
+                <input id="light-v10" type="radio" name="rtoggle" value="light" />
                 <label for="light-v10">light</label>
                 <input id="dark-v10" type="radio" name="rtoggle" value="dark" />
                 <label for="dark-v10">dark</label>
-                <input
-                  id="streets-v11"
-                  type="radio"
-                  name="rtoggle"
-                  value="streets"
-                  checked="checked"
-                />
+                <input id="streets-v11" type="radio" name="rtoggle" value="streets" checked="checked" />
                 <label for="streets-v11">streets</label>
-                <input
-                  id="outdoors-v11"
-                  type="radio"
-                  name="rtoggle"
-                  value="outdoors"
-                />
+                <input id="outdoors-v11" type="radio" name="rtoggle" value="outdoors" />
                 <label for="outdoors-v11">outdoors</label>
               </div>
             </div>
@@ -222,12 +190,13 @@
     <section>
       <div class="infoSection">
         <div class="colorContainer">
-          <div class="colorButton"></div>
-          <div class="colorButton active"></div>
-          <div class="colorButton"></div>
+          <div class="colorButton" id="colorButton1"></div>
+          <div class="colorButton" id="colorButton2"></div>
+          <div class="colorButton" id="colorButton3"></div>
         </div>
         <i class="fas fa-info"></i>
       </div>
     </section>
+    <a href="https://www.amdoren.com">Amdoren</a>
   </body>
 </html>

@@ -79,6 +79,10 @@ body {
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  -webkit-transition: all 2.5s ease-in;
+  transition: all 2.5s ease-in;
+  -webkit-transition: background-color 0.25s ease-in;
+  transition: background-color 0.25s ease-in;
 }
 
 header {
@@ -406,7 +410,7 @@ main {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  background-color: purple;
+  background-color: #3333;
   padding: 7px 0px 10px 0px;
   border: 1px solid white;
   border-radius: 10px;
@@ -501,7 +505,7 @@ form #searchText {
 
 @media (max-width: 900px) {
   form #searchText {
-    padding-left: 0.3rem;
+    padding-left: 0.8rem;
   }
 }
 
@@ -711,6 +715,9 @@ form:hover {
 
 .weatherContainer h1 .star {
   cursor: pointer;
+  position: relative;
+  bottom: 7px;
+  left: 5px;
 }
 
 .weatherContainer .date {
@@ -746,6 +753,22 @@ form:hover {
 @media (max-width: 599px) {
   .weatherContainer .temperatureContainer .temperature {
     font-size: 1.7rem;
+  }
+}
+
+.weatherContainer .temperatureContainer .weatherIcon {
+  width: 70px;
+}
+
+@media (max-width: 599px) {
+  .weatherContainer .temperatureContainer .weatherIcon {
+    width: 50px;
+  }
+}
+
+@media (max-width: 900px) {
+  .weatherContainer .temperatureContainer .weatherIcon {
+    width: 60px;
   }
 }
 
@@ -817,13 +840,19 @@ form:hover {
   margin: 0px 13px 25px 20px;
 }
 
-.newsItemContainer .newsItem h3 {
+.newsItemContainer .newsItem .newsHeaderLink {
+  text-decoration: none;
+  color: #e5e5e5;
+}
+
+.newsItemContainer .newsItem .newsHeaderLink h3 {
   font-size: 1.2rem;
   font-family: "Lato-bold";
+  cursor: pointer;
 }
 
 @media (max-width: 599px) {
-  .newsItemContainer .newsItem h3 {
+  .newsItemContainer .newsItem .newsHeaderLink h3 {
     font-size: 1.1rem;
     margin-bottom: 10px;
   }
@@ -851,14 +880,14 @@ form:hover {
   }
 }
 
-.newsItemContainer .newsItem .newsItemBody .newsItemText {
+.newsItemContainer .newsItem .newsItemBody .newsText {
   font-size: 1rem;
   font-family: "Lato-light";
   padding-right: 10px;
 }
 
 @media (max-width: 599px) {
-  .newsItemContainer .newsItem .newsItemBody .newsItemText {
+  .newsItemContainer .newsItem .newsItemBody .newsText {
     -webkit-box-ordinal-group: 3;
         -ms-flex-order: 2;
             order: 2;
@@ -867,12 +896,14 @@ form:hover {
   }
 }
 
-.newsItemContainer .newsItem .newsItemBody .newsItemImage {
+.newsItemContainer .newsItem .newsItemBody .newsImage {
   width: 170px;
+  cursor: pointer;
+  caret-color: transparent;
 }
 
 @media (max-width: 599px) {
-  .newsItemContainer .newsItem .newsItemBody .newsItemImage {
+  .newsItemContainer .newsItem .newsItemBody .newsImage {
     -webkit-box-ordinal-group: 2;
         -ms-flex-order: 1;
             order: 1;
@@ -880,6 +911,18 @@ form:hover {
        object-fit: cover;
     width: 95%;
     margin-bottom: 10px;
+  }
+}
+
+.newsItemContainer .newsItem .newsMetaData {
+  font-size: 0.7rem;
+  font-family: "Lato-light";
+}
+
+@media (max-width: 599px) {
+  .newsItemContainer .newsItem .newsMetaData {
+    margin-top: 10px;
+    font-size: 0.6rem;
   }
 }
 
@@ -1051,7 +1094,6 @@ form:hover {
 .colorContainer .colorButton {
   width: 23px;
   height: 23px;
-  background-color: yellow;
   border: 1px solid;
   border-color: black;
   border-radius: 30px;
@@ -1067,8 +1109,20 @@ form:hover {
   }
 }
 
+.colorContainer #colorButton1 {
+  background-color: #e5e5e5;
+}
+
+.colorContainer #colorButton2 {
+  background-color: #14213d;
+}
+
+.colorContainer #colorButton3 {
+  background-color: #232323;
+}
+
 .colorContainer .active {
-  border-color: #e5e5e5;
+  border-color: red;
 }
 
 .fa-info {

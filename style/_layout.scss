@@ -1,8 +1,10 @@
 body {
-  background: /* url('../assets/img/picture/night.jpg'), */ $blue;
+  background: /* url('../assets/img/picture/t/clouds_20.png')  ,*/ $blue;
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  transition: all 2.5s ease-in;
+  transition: background-color 0.25s ease-in;
 }
 
 header {
@@ -184,7 +186,7 @@ main {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: purple;
+  background-color: #3333;
   padding: 7px 0px 10px 0px;
   border: 1px solid white;
   border-radius: 10px;

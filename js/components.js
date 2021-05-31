@@ -4,48 +4,107 @@ export const chart = function () {
   var myChart = new Chart(ctx, {
     type: 'line',
     data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange', 'a'],
+      labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
       datasets: [
         {
-          label: '# of Votes',
-          data: [12, 19, 3, 5, 2, 3, 32, 5, 2, 3],
-          backgroundColor: [
-            'rgba(255, 99, 132, 0.2)',
-            'rgba(54, 162, 235, 0.2)',
-            'rgba(255, 206, 86, 0.2)',
-            'rgba(75, 192, 192, 0.2)',
-            'rgba(153, 102, 255, 0.2)',
-            'rgba(255, 159, 64, 0.2)',
-          ],
+          data: [12, 19, 10, 15, 22, 25],
+
           borderColor: [
-            'rgba(255, 99, 132, 1)',
-            'rgba(54, 162, 235, 1)',
-            'rgba(255, 206, 86, 1)',
-            'rgba(75, 192, 192, 1)',
-            'rgba(153, 102, 255, 1)',
-            'rgba(255, 159, 64, 1)',
+            'rgba(255, 255, 255, 1)',
+            'rgba(255, 255, 255, 1)',
+            'rgba(255, 255, 255, 1)',
+            'rgba(255, 255, 255, 1)',
+            'rgba(255, 255, 255, 1)',
+            'rgba(255, 255, 255, 1)',
           ],
-          borderWidth: 5,
+          pointBackgroundColor: '#ffff',
+          pointBorderColor: '#ffff',
+          // pointRadius: '3',
+          // backgroundColor: ['rgba(255, 255, 255, 1)'],
+          borderWidth: 4,
         },
       ],
     },
+    options: {
+      display: false,
+      responsive: true,
+      showLine: true,
+      scaleShowLabels: false,
+      fill: false,
+      showTooltips: false,
+      scales: {
+        y: {
+          ticks: {
+            callback: function (value, index, values) {
+              return value + ' °C';
+            },
+            color: '#ffff',
+            font: { size: 11, family: 'Lato-regular' },
+          },
+          grid: {
+            display: false,
+            drawBorder: false,
+          },
+        },
+        x: {
+          ticks: {
+            color: '#ffff',
+            font: { size: 11, family: 'Lato-regular' },
+          },
+          grid: {
+            display: false,
+            drawBorder: false,
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          display: false,
+        },
+        tooltip: {
+          displayColors: false,
+          callbacks: {
+            label: function (context) {
+              var label = context.dataset.label || '';
+
+              if (context.parsed.y !== null) {
+                label += ' ' + context.parsed.y + ' °C';
+              }
+              return label;
+            },
+          },
+        },
+      },
+    },
   });
+  /* myChart.data = {
+    labels: ['1', '2', '3', '4', '5', '6'],
+  };
+  myChart.update(); */
+
+  return myChart;
 };
 
-export const map = function () {
-  mapboxgl.accessToken =
-    'pk.eyJ1IjoidGVtcGVyNDQiLCJhIjoiY2ttdjF2ZGswMDB3YTJ1dXRucjB3NjJoYyJ9.7vndcsMZHr7Imw_TIdfvMg';
+/* export const changeData = function (data) {
+  let myChart = chart();
+  myChart.data.labels = ['1', '2', '3', '4', '5', '6'];
+  myChart.data.datasets[0].data = [1, 19, 5, 13, 22, 35];
+  myChart.update();
+}; */
+
+export const map = function (lon = -74.5, lat = 40) {
+  mapboxgl.accessToken = 'pk.eyJ1IjoidGVtcGVyNDQiLCJhIjoiY2ttdjF2ZGswMDB3YTJ1dXRucjB3NjJoYyJ9.7vndcsMZHr7Imw_TIdfvMg';
   var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v11', //style: 'mapbox://styles/mapbox/satellite-v9', // style URL
-    center: [-74.5, 40], // starting position
+    //center: [-74.5, 40], // starting position
     zoom: 9, // starting zoom
   });
   map.addControl(new mapboxgl.NavigationControl());
 
-  /* map.flyTo({
-    center: [0, 90],
-    }); */
+  map.flyTo({
+    center: [lon, lat],
+  });
 
   // MAP STYLE
   var layerList = document.getElementById('menu');
@@ -64,13 +123,23 @@ export const map = function () {
   var swatches = document.getElementById('swatches');
   var layer = document.getElementById('layer');
   var colors = ['#41b6c4', '#2c7fb8', '#feb24c', '#fd8d3c', '#f03b20'];
-
+  // console.log(swatches);
   colors.forEach(function (color) {
     var swatch = document.createElement('button');
     swatch.style.backgroundColor = color;
     swatch.addEventListener('click', function () {
       map.setPaintProperty(layer.value, 'fill-color', color);
     });
+    // console.log(swatches.children.length);
+    //To delete the old swatch
+    if (swatches.children.length > 4) {
+      swatches.innerHTML = '';
+    }
+
+    //if (swatches.children.length <= 4) {
     swatches.appendChild(swatch);
+    // console.log(swatch);
+    // swatches.innerHTML = swatch;
+    //  }
   });
 };

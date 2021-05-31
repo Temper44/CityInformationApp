@@ -43,7 +43,7 @@ form {
     flex-grow: 1;
     padding: 0.5rem 0.25rem 0.5rem 1.25rem;
     @include tablet-landscape-down {
-      padding-left: 0.3rem;
+      padding-left: 0.8rem;
     }
     @include phone-only {
       font-size: 0.9rem;
@@ -198,6 +198,9 @@ form:hover {
     }
     .star {
       cursor: pointer;
+      position: relative;
+      bottom: 7px;
+      left: 5px;
     }
   }
   .date {
@@ -225,6 +228,15 @@ form:hover {
         font-size: 1.7rem;
       }
       letter-spacing: 0.025rem;
+    }
+    .weatherIcon {
+      width: 70px;
+      @include phone-only {
+        width: 50px;
+      }
+      @include tablet-landscape-down {
+        width: 60px;
+      }
     }
     .conditionMaxMinContainer {
       font-family: $font-light;
@@ -277,14 +289,20 @@ form:hover {
     border-radius: 6px;
     padding: 17px 15px 15px 17px;
     margin: 0px 13px 25px 20px;
-    h3 {
-      font-size: 1.2rem;
-      font-family: $font-bold;
-      @include phone-only {
-        font-size: 1.1rem;
-        margin-bottom: 10px;
+    .newsHeaderLink {
+      text-decoration: none;
+      color: $white;
+      h3 {
+        font-size: 1.2rem;
+        font-family: $font-bold;
+        cursor: pointer;
+        @include phone-only {
+          font-size: 1.1rem;
+          margin-bottom: 10px;
+        }
       }
     }
+
     .newsItemBody {
       display: flex;
       justify-content: space-between;
@@ -294,7 +312,7 @@ form:hover {
         justify-content: center;
       }
 
-      .newsItemText {
+      .newsText {
         font-size: 1rem;
         font-family: $font-light;
         padding-right: 10px;
@@ -305,8 +323,10 @@ form:hover {
           // flex-basis: 100%;
         }
       }
-      .newsItemImage {
+      .newsImage {
         width: 170px;
+        cursor: pointer;
+        caret-color: transparent;
         @include phone-only {
           order: 1;
           object-fit: cover;
@@ -314,6 +334,14 @@ form:hover {
           margin-bottom: 10px;
           // flex-basis: 100%;
         }
+      }
+    }
+    .newsMetaData {
+      font-size: 0.7rem;
+      font-family: $font-light;
+      @include phone-only {
+        margin-top: 10px;
+        font-size: 0.6rem;
       }
     }
   }
@@ -447,7 +475,7 @@ form:hover {
   .colorButton {
     width: 23px;
     height: 23px;
-    background-color: yellow;
+    //background-color: yellow;
     border: 1px solid;
     border-color: black;
     border-radius: 30px;
@@ -459,8 +487,17 @@ form:hover {
       height: 20px;
     }
   }
+  #colorButton1 {
+    background-color: $white;
+  }
+  #colorButton2 {
+    background-color: $blue;
+  }
+  #colorButton3 {
+    background-color: $grey;
+  }
   .active {
-    border-color: $white;
+    border-color: red;
   }
 }
 .fa-info {
